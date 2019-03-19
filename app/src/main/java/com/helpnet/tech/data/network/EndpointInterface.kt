@@ -1,7 +1,7 @@
 package com.helpnet.tech.data.network
 
-import com.helpnet.tech.data.model.OS
 import com.helpnet.tech.data.model.Situation
+import com.helpnet.tech.data.model.response.OSResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -16,11 +16,10 @@ interface EndpointInterface {
     fun listSituations(): Call<List<Situation>>
 
     @Headers(CONTENT_TYPE_JSON)
-    @GET("os/listBySituation")
+    @GET("os/listOsByProviderIdAndSituationOpened")
     fun listOSBySituation(
-        @Query("providerId") providerId: Int,
-        @Query("situationId") situationId: Int
-    ): Call<List<OS>>
+        @Query("providerId") providerId: Int
+    ): Call<OSResponse>
 
 //    @Headers(CONTENT_TYPE_JSON)
 //    @POST("os/register")

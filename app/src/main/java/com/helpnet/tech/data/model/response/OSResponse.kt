@@ -1,7 +1,8 @@
 package com.helpnet.tech.data.model.response
 
-import com.helpnet.tech.data.model.OS
+import com.google.gson.annotations.SerializedName
+import com.helpnet.tech.data.model.OSsimple
 
 data class OSResponse(
-    val osList: List<OS>
+    @SerializedName("message") val osList: List<OSsimple>
 )
