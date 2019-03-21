@@ -17,7 +17,13 @@ interface EndpointInterface {
 
     @Headers(CONTENT_TYPE_JSON)
     @GET("os/listOsByProviderIdAndSituationOpened")
-    fun listOSBySituation(
+    fun listOpenOS(
+        @Query("providerId") providerId: Int
+    ): Call<OSResponse>
+
+    @Headers(CONTENT_TYPE_JSON)
+    @GET("os/listOsByProviderIdAndInProgress")
+    fun listProgressOS(
         @Query("providerId") providerId: Int
     ): Call<OSResponse>
 

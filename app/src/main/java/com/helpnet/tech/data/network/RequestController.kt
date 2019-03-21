@@ -16,12 +16,17 @@ object RequestController {
     }
 
     fun listOpenOS(providerId: Int, callbackResponse: Callback<OSResponse>) {
-        val call = apiController.listOSBySituation(providerId)
+        val call = apiController.listOpenOS(providerId)
         call.enqueue(callbackResponse)
     }
 
-//    fun listOSBySituation(providerId: Int, situationId: Int, callbackResponse: Callback<List<OS>>) {
-//        val call = apiController.listOSBySituation(providerId, situationId)
+    fun listInProgressOS(providerId: Int, callbackResponse: Callback<OSResponse>) {
+        val call = apiController.listProgressOS(providerId)
+        call.enqueue(callbackResponse)
+    }
+
+//    fun listOpenOS(providerId: Int, situationId: Int, callbackResponse: Callback<List<OS>>) {
+//        val call = apiController.listOpenOS(providerId, situationId)
 //        call.enqueue(callbackResponse)
 //    }
 }

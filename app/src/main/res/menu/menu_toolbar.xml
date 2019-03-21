@@ -3,7 +3,8 @@
 
     <item
             android:id="@+id/navigation_notification"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_notification"
+            android:iconTint="@android:color/white"
             android:title="@string/title_home"
             app:showAsAction="always"/>
 </menu>

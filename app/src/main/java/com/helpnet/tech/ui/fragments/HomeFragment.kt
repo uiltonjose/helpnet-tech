@@ -48,7 +48,11 @@ class HomeFragment : Fragment() {
 
             override fun onResponse(call: Call<OSResponse>?, response: Response<OSResponse>?) {
                 if (response?.isSuccessful!! && response.body() != null) {
-                    setupViews(response.body().osList)
+                    val body = response.body()
+                    body?.osList?.also {
+                        setupViews(it)
+                    }?: Toast.makeText(this@HomeFragment.context, "Shiiiiii", Toast.LENGTH_LONG).show()
+
                 } else {
                     Toast.makeText(this@HomeFragment.context, "Shiiiiii", Toast.LENGTH_LONG).show()
                 }
