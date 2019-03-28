@@ -32,7 +32,6 @@ class MainActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         //TODO Missing handle notification icon
-        print("teste miguel")
         return super.onOptionsItemSelected(item)
     }
 
@@ -44,17 +43,10 @@ class MainActivity : BaseActivity() {
             else -> null
         }
 
-        print("teste miguel")
-
         fragmentSelected?.also {
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, it).commit()
         }
 
         true
     }
-
-    private fun teste() {
-        print("teste miguel")
-    }
-
 }
