@@ -5,4 +5,7 @@
     <string name="title_profile">Perfil</string>
     <string name="loading_label">Carregando…</string>
     <string name="no_service_available">Nenhuma OS disponível</string>
+    <string name="email_hint">Endereço de Email</string>
+    <string name="password_hint">Senha</string>
+    <string name="login_button">Logar</string>
 </resources>

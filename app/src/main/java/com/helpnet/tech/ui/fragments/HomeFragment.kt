@@ -43,7 +43,8 @@ class HomeFragment : Fragment() {
         //TODO pass the current ProviderId
         RequestController.listOpenOS(3, object : Callback<OSResponse> {
             override fun onFailure(call: Call<OSResponse>?, t: Throwable?) {
-                Toast.makeText(this@HomeFragment.context, "Shiiiiii", Toast.LENGTH_LONG).show()
+                val messageError = "Something went wrong... ${t?.message}"
+                showPageError(messageError)
             }
 
             override fun onResponse(call: Call<OSResponse>?, response: Response<OSResponse>?) {
@@ -51,10 +52,10 @@ class HomeFragment : Fragment() {
                     val body = response.body()
                     body?.osList?.also {
                         setupViews(it)
-                    }?: Toast.makeText(this@HomeFragment.context, "Shiiiiii", Toast.LENGTH_LONG).show()
+                    }?: Toast.makeText(this@HomeFragment.activity, "Shiiiiii", Toast.LENGTH_LONG).show()
 
                 } else {
-                    Toast.makeText(this@HomeFragment.context, "Shiiiiii", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@HomeFragment.activity, "Shiiiiii", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -74,5 +75,11 @@ class HomeFragment : Fragment() {
         } else {
             tv_empty_list.visibility = View.VISIBLE
         }
+    }
+
+    private fun showPageError(message: String) {
+        layout_loading.visibility = GONE
+        tv_empty_list.visibility = View.VISIBLE
+        tv_empty_list.text = message
     }
 }
