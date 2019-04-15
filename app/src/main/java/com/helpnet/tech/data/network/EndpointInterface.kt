@@ -2,6 +2,7 @@ package com.helpnet.tech.data.network
 
 import com.helpnet.tech.data.model.Situation
 import com.helpnet.tech.data.model.response.OSResponse
+import com.helpnet.tech.data.model.response.OsDetailResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -26,6 +27,12 @@ interface EndpointInterface {
     fun listProgressOS(
         @Query("providerId") providerId: Int
     ): Call<OSResponse>
+
+    @Headers(CONTENT_TYPE_JSON)
+    @GET("os/getOsByNumber")
+    fun getOsDetailByNumber(
+        @Query("numberOS") numberOS: Long
+    ): Call<OsDetailResponse>
 
 //    @Headers(CONTENT_TYPE_JSON)
 //    @POST("os/register")

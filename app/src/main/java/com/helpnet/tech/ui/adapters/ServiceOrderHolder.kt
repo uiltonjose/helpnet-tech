@@ -1,9 +1,12 @@
 package com.helpnet.tech.ui.adapters
 
+import android.content.Intent
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.helpnet.tech.R
+import com.helpnet.tech.ui.activities.OpenServiceDetail
+import com.helpnet.tech.util.Constants.OS_NUMBER_PARAM
 
 class ServiceOrderHolder(
     itemView: View,
@@ -20,12 +23,11 @@ class ServiceOrderHolder(
     }
 
     override fun onClick(v: View?) {
-//        val notification = serviceOrderAdapter.listNotification[adapterPosition]
-//        val notificationJson = Gson().toJson(notification)
-//
-//        Intent(activity, NotificationDetailActivity::class.java).apply {
-//            putExtra("notificationJson", notificationJson)
-//            activity.startActivity(this)
-//        }
+        val orderService = serviceOrderAdapter.listOS[adapterPosition]
+        val context = itemView.context
+        Intent(context, OpenServiceDetail::class.java).apply {
+            putExtra(OS_NUMBER_PARAM, orderService.number)
+            context.startActivity(this)
+        }
     }
 }

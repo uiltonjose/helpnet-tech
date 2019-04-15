@@ -2,6 +2,7 @@ package com.helpnet.tech.data.network
 
 import com.helpnet.tech.data.model.Situation
 import com.helpnet.tech.data.model.response.OSResponse
+import com.helpnet.tech.data.model.response.OsDetailResponse
 import retrofit2.Callback
 
 object RequestController {
@@ -22,6 +23,11 @@ object RequestController {
 
     fun listInProgressOS(providerId: Int, callbackResponse: Callback<OSResponse>) {
         val call = apiController.listProgressOS(providerId)
+        call.enqueue(callbackResponse)
+    }
+
+    fun getOsDetailByNumber(osNumber: Long, callbackResponse: Callback<OsDetailResponse>) {
+        val call = apiController.getOsDetailByNumber(osNumber)
         call.enqueue(callbackResponse)
     }
 

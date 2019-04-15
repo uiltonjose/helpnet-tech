@@ -8,7 +8,7 @@ import com.helpnet.tech.R
 import com.helpnet.tech.data.model.OSsimple
 
 class ServiceOrderAdapter constructor(
-    private val listOS: List<OSsimple>
+    val listOS: List<OSsimple>
 ) : RecyclerView.Adapter<ServiceOrderHolder>() {
 
     @SuppressLint("InflateParams")
