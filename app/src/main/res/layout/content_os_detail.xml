@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            style="@style/TextTitleDetail"
+            android:text="@string/service_ordem_label"/>
+
+    <TextView
+            android:id="@+id/osNumberTextView"
+            style="@style/TextDetail"
+            tools:text="Número OS: 321654987"/>
+
+    <TextView
+            android:id="@+id/problemDescriptionTextView"
+            style="@style/TextDetail"
+            tools:text="Problema: Sem Internet"/>
+
+    <TextView
+            android:id="@+id/osDetailDescriptionTextView"
+            style="@style/TextDetail"
+            tools:text="Detalhe da OS: ggg"/>
+</LinearLayout>

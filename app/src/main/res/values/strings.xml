@@ -1,11 +1,38 @@
 <resources>
     <string name="app_name">HelpNet Tech</string>
+    <string name="loading_label">Carregando…</string>
+    <string name="no_service_available">Nenhuma OS disponível</string>
+
+    <!--Main Tabs-->
     <string name="title_home">OS Abertas</string>
     <string name="title_dashboard">Em andamento</string>
     <string name="title_profile">Perfil</string>
-    <string name="loading_label">Carregando…</string>
-    <string name="no_service_available">Nenhuma OS disponível</string>
+
+    <!--Login-->
     <string name="email_hint">Endereço de Email</string>
     <string name="password_hint">Senha</string>
     <string name="login_button">Logar</string>
+
+    <!--Service Order Detail-->
+    <string name="os_detail_screen_title">Detalhes da OS</string>
+    <string name="customer_data_label">Dados do cliente</string>
+    <string name="service_ordem_label">Ordem de Serviço</string>
+    <string name="address_label">Endereço</string>
+
+    <!--OSData-->
+    <string name="osNumber"><![CDATA[<b>Número OS:</b> %s]]></string>
+    <string name="problemData"><![CDATA[<b>Problema:</b> %s]]></string>
+    <string name="osDetailData"><![CDATA[<b>Detalhe da OS:</b> %s]]></string>
+
+    <!--CustomerData-->
+    <string name="customerID"><![CDATA[<b>CPF do cliente:</b> %s]]></string>
+    <string name="customerName"><![CDATA[<b>Nome do cliente:</b> %s]]></string>
+    <string name="referenceDescription"><![CDATA[<b>Referência:</b> %s]]></string>
+    <string name="phoneCustomer"><![CDATA[<b>Telefone:</b> %s]]></string>
+    <string name="cellphoneCustomer"><![CDATA[<b>Celular:</b> %s]]></string>
+    <string name="plainDetail"><![CDATA[<b>Plano:</b> %s]]></string>
+    <string name="addressCustomer"><![CDATA[<b>Endereço:</b> %s]]></string>
+    <string name="addressNumber"><![CDATA[<b>Número:</b> %s]]></string>
+    <string name="addressNeighbor"><![CDATA[<b>Bairro:</b> %s]]></string>
+    <string name="addressCity"><![CDATA[<b>Cidade:</b> %s]]></string>
 </resources>

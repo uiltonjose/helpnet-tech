@@ -9,7 +9,7 @@ data class OsDetailResponse(
 
 data class CustomerData(
     @SerializedName("bairro") val neighbor: String,
-    @SerializedName("celular") val celphone: String,
+    @SerializedName("celular") val cellphone: String,
     @SerializedName("cep") val cep: String,
     @SerializedName("cidade") val city: String,
     @SerializedName("cpf_cnpj") val cpfCnpj: String,
@@ -22,8 +22,8 @@ data class CustomerData(
     @SerializedName("fone") val phone: String,
     @SerializedName("login") val login: String,
     @SerializedName("nomeCliente") val customerName: String,
-    @SerializedName("nome_res") val nome_res: String,
-    @SerializedName("numero") val number: String,
+    @SerializedName("nome_res") val referenceDescription: String,
+    @SerializedName("numero") val addressNumber: String,
     @SerializedName("numeroOS") val osNumber: Long,
     @SerializedName("plano") val plan: String,
     @SerializedName("problema") val problem: String

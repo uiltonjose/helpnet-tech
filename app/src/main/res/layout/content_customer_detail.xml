@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            style="@style/TextTitleDetail"
+            android:text="@string/customer_data_label"/>
+
+    <TextView
+            android:id="@+id/customerIDTextView"
+            style="@style/TextDetail"
+            tools:text="CPF do cliente: 169.654.5456-45"/>
+
+    <TextView
+            android:id="@+id/customerNameTextView"
+            style="@style/TextDetail"
+            tools:text="Nome do cliente: José Oliveira"/>
+
+    <TextView
+            android:id="@+id/referenceDescriptionTextView"
+            style="@style/TextDetail"
+            tools:text="Referência: GABRIEL DE IVONETE"/>
+
+    <TextView
+            android:id="@+id/phoneTextView"
+            style="@style/TextDetail"
+            tools:text="Telefone: (81) 3498-6813"/>
+
+    <TextView
+            android:id="@+id/cellphoneTextView"
+            style="@style/TextDetail"
+            tools:text="Celular: (81) 9.8756-9812"/>
+
+    <TextView
+            android:id="@+id/planDetailTextView"
+            style="@style/TextDetail"
+            tools:text="Plano: 8_MB"/>
+
+    <TextView
+            style="@style/TextTitleDetail"
+            android:text="@string/address_label"/>
+
+    <TextView
+            android:id="@+id/addressTextView"
+            style="@style/TextDetail"
+            tools:text="Endereço: Rua Estrada da Luz."/>
+
+    <TextView
+            android:id="@+id/addressNumberTextView"
+            style="@style/TextDetail"
+            tools:text="Número: 14"/>
+
+    <TextView
+            android:id="@+id/neighborTextView"
+            style="@style/TextDetail"
+            tools:text="Bairro: Santo Aleixo"/>
+
+    <TextView
+            android:id="@+id/cityTextView"
+            style="@style/TextDetail"
+            tools:text="Cidade: Jaboatão"/>
+</LinearLayout>

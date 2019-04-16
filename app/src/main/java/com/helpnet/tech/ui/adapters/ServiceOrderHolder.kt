@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.helpnet.tech.R
-import com.helpnet.tech.ui.activities.OpenServiceDetail
+import com.helpnet.tech.ui.activities.OpenServiceDetailActivity
 import com.helpnet.tech.util.Constants.OS_NUMBER_PARAM
 
 class ServiceOrderHolder(
@@ -25,7 +25,7 @@ class ServiceOrderHolder(
     override fun onClick(v: View?) {
         val orderService = serviceOrderAdapter.listOS[adapterPosition]
         val context = itemView.context
-        Intent(context, OpenServiceDetail::class.java).apply {
+        Intent(context, OpenServiceDetailActivity::class.java).apply {
             putExtra(OS_NUMBER_PARAM, orderService.number)
             context.startActivity(this)
         }

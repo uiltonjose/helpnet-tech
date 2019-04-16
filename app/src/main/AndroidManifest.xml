@@ -29,7 +29,7 @@
                 android:screenOrientation="portrait"/>
 
         <activity
-                android:name=".ui.activities.OpenServiceDetail"
+                android:name=".ui.activities.OpenServiceDetailActivity"
                 android:screenOrientation="portrait"/>
     </application>
 
