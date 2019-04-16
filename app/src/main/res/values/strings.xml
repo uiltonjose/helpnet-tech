@@ -18,6 +18,8 @@
     <string name="customer_data_label">Dados do cliente</string>
     <string name="service_ordem_label">Ordem de Serviço</string>
     <string name="address_label">Endereço</string>
+    <string name="start_working_cta">Iniciar Atendimento</string>
+    <string name="finish_working_cta">Finalizar Atendimento</string>
 
     <!--OSData-->
     <string name="osNumber"><![CDATA[<b>Número OS:</b> %s]]></string>
@@ -35,4 +37,5 @@
     <string name="addressNumber"><![CDATA[<b>Número:</b> %s]]></string>
     <string name="addressNeighbor"><![CDATA[<b>Bairro:</b> %s]]></string>
     <string name="addressCity"><![CDATA[<b>Cidade:</b> %s]]></string>
+
 </resources>

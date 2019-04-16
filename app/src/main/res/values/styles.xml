@@ -15,8 +15,12 @@
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
-    <style name="RoundedAppButton" parent="Button">
-        <item name="android:background">@drawable/button_rounded_shape</item>
+    <style name="PrimaryRoundedAppButton" parent="Button">
+        <item name="android:background">@drawable/primary_button_rounded_shape</item>
+    </style>
+
+    <style name="SecondaryRoundedAppButton" parent="Button">
+        <item name="android:background">@drawable/secondary_button_rounded_shape</item>
     </style>
 
     <style name="Button">

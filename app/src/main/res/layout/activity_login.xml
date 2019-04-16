@@ -64,7 +64,7 @@
 
     <com.google.android.material.button.MaterialButton
             android:id="@+id/loginButton"
-            style="@style/RoundedAppButton"
+            style="@style/PrimaryRoundedAppButton"
             android:layout_below="@+id/tilUserPassword"
             android:layout_marginTop="12dp"
             android:layout_marginLeft="16dp"

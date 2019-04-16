@@ -8,13 +8,14 @@ import com.helpnet.tech.R
 import com.helpnet.tech.data.model.OSsimple
 
 class ServiceOrderAdapter constructor(
-    val listOS: List<OSsimple>
+    val listOS: List<OSsimple>,
+    val isInProgress: Boolean = false
 ) : RecyclerView.Adapter<ServiceOrderHolder>() {
 
     @SuppressLint("InflateParams")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceOrderHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.list_os_item, null)
-        return ServiceOrderHolder(viewHolder, this)
+        return ServiceOrderHolder(viewHolder, this, isInProgress)
     }
 
     override fun getItemCount(): Int {
