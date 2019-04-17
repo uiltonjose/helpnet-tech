@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent" android:layout_height="match_parent"
-                android:background="@color/login_bg">
+                android:background="@color/general_bg">
 
     <ImageView
             android:id="@+id/logo"
@@ -65,6 +65,7 @@
     <com.google.android.material.button.MaterialButton
             android:id="@+id/loginButton"
             style="@style/PrimaryRoundedAppButton"
+            app:cornerRadius="20dp"
             android:layout_below="@+id/tilUserPassword"
             android:layout_marginTop="12dp"
             android:layout_marginLeft="16dp"
