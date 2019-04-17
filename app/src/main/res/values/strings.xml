@@ -37,5 +37,7 @@
     <string name="addressNumber"><![CDATA[<b>Número:</b> %s]]></string>
     <string name="addressNeighbor"><![CDATA[<b>Bairro:</b> %s]]></string>
     <string name="addressCity"><![CDATA[<b>Cidade:</b> %s]]></string>
+    <string name="login">LOGIN</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
 
 </resources>
