@@ -1,7 +1,11 @@
 <resources>
+    <!--General-->
     <string name="app_name">HelpNet Tech</string>
     <string name="loading_label">Carregando…</string>
     <string name="no_service_available">Nenhuma OS disponível</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="ok">Ok</string>
 
     <!--Main Tabs-->
     <string name="title_home">OS Abertas</string>
@@ -24,6 +28,8 @@
     <string name="address_label">Endereço</string>
     <string name="start_working_cta">Iniciar Atendimento</string>
     <string name="finish_working_cta">Finalizar Atendimento</string>
+    <string name="problem_resolution_hint">Resolução do problema</string>
+    <string name="send_customer_message_hint">Mensagem para o cliente</string>
 
     <!--OSData-->
     <string name="osNumber"><![CDATA[<b>Número OS:</b> %s]]></string>
@@ -44,6 +50,11 @@
     <string name="login">LOGIN</string>
     <string name="do_login">Logar</string>
     <string name="forgot_password">Esqueceu a senha?</string>
+
+    <!--Profile-->
+    <string name="name">Nome</string>
+    <string name="email">Email</string>
+    <string name="edit">Editar</string>
 
 
 </resources>

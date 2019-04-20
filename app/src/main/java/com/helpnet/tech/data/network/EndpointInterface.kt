@@ -1,13 +1,13 @@
 package com.helpnet.tech.data.network
 
+import com.helpnet.tech.data.model.ChangeSituation
 import com.helpnet.tech.data.model.Situation
 import com.helpnet.tech.data.model.response.GetUserInfoResponse
 import com.helpnet.tech.data.model.response.OSResponse
 import com.helpnet.tech.data.model.response.OsDetailResponse
+import org.json.JSONObject
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Query
+import retrofit2.http.*
 
 const val CONTENT_TYPE_JSON = "Content-Type:application/json"
 
@@ -41,8 +41,8 @@ interface EndpointInterface {
         @Query("userLogin") numberOS: String
     ): Call<GetUserInfoResponse>
 
-//    @Headers(CONTENT_TYPE_JSON)
-//    @POST("os/register")
-//    fun registerOS(@Body bodyRequest: OS): Call<String>
+    @Headers(CONTENT_TYPE_JSON)
+    @POST("os/changeSituation")
+    fun changeSituation(@Body bodyRequest: ChangeSituation): Call<JSONObject>
 
 }

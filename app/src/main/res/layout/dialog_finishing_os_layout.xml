@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilInputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/separator_color"
+            app:errorEnabled="true">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etProblemResolution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/problem_resolution_hint"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:maxLines="4"
+                android:textColor="@color/text_333333"
+                android:scrollbars="vertical"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilInputText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/separator_color"
+            app:errorEnabled="true">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etMessageToCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/send_customer_message_hint"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:maxLines="4"
+                android:textColor="@color/text_333333"
+                android:imeOptions="actionDone"
+                android:scrollbars="vertical"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

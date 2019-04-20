@@ -1,20 +1,28 @@
 package com.helpnet.tech.ui.activities
 
+import android.content.DialogInterface
 import android.os.Bundle
-import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.helpnet.tech.R
+import com.helpnet.tech.data.model.ChangeSituation
+import com.helpnet.tech.data.model.Event
 import com.helpnet.tech.data.model.response.CustomerData
 import com.helpnet.tech.data.model.response.OsDetailResponse
 import com.helpnet.tech.data.network.RequestController
+import com.helpnet.tech.util.AlertDialogUtil
 import com.helpnet.tech.util.Constants
+import com.helpnet.tech.util.EventType
+import com.helpnet.tech.util.Situations
 import kotlinx.android.synthetic.main.activity_os_detail.*
 import kotlinx.android.synthetic.main.content_customer_detail.*
 import kotlinx.android.synthetic.main.content_os_detail.*
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class OpenServiceDetailActivity : BaseActivity() {
 
@@ -90,17 +98,93 @@ class OpenServiceDetailActivity : BaseActivity() {
         val isWIPStatus = intent?.extras?.getBoolean(Constants.OS_WIP_PARAM)!!
         if (isWIPStatus) {
             startFinishServiceCTA.text = getString(R.string.finish_working_cta)
-            //startFinishServiceCTA.background = ContextCompat.getDrawable(this, R.drawable.secondary_button_rounded_shape)
             startFinishServiceCTA.setOnClickListener {
-                //TODO
-                Toast.makeText(this, "Ainda não tá pronto, avexado....", Toast.LENGTH_LONG).show()
+                finishOSAttend(customerData)
             }
         } else {
             startFinishServiceCTA.setOnClickListener {
-                //TODO
-                Toast.makeText(this, "Ainda não tá pronto, avexado....", Toast.LENGTH_LONG).show()
+                changeToWIP(customerData)
             }
         }
+    }
+
+    private fun changeToWIP(customerData: CustomerData) {
+        AlertDialogUtil.showMessageOKCancel(this@OpenServiceDetailActivity,
+            "OS: ${customerData.osNumber}",
+            "Tem certeza que deseja iniciar o atendimento ao cliente ${customerData.customerName}?",
+            okListener = DialogInterface.OnClickListener { _, _ ->
+
+                val event = Event(
+                    getProvider().id,
+                    EventType.PUT_IN_PROGRESS.value,
+                    ""
+                )
+
+                val changeSituation = ChangeSituation(
+                    customerData.osNumber,
+                    Situations.WORK_IN_PROGRESS.value,
+                    null,
+                    getProvider().id,
+                    event
+                )
+                changeSituation(changeSituation)
+            })
+    }
+
+    private fun finishOSAttend(customerData: CustomerData) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_finishing_os_layout, null)
+        val problemResolution = dialogView.findViewById<EditText>(R.id.etProblemResolution)
+        val messageToCustomer = dialogView.findViewById<EditText>(R.id.etMessageToCustomer)
+
+        AlertDialogUtil.showCustomDialog(this@OpenServiceDetailActivity,
+            "Finalizar OS ${customerData.osNumber}?",
+            dialogView,
+            okListener = DialogInterface.OnClickListener { _, _ ->
+
+                val event = Event(
+                    getProvider().id,
+                    EventType.CLOSE_OS.value,
+                    problemResolution.text.toString()
+                )
+
+                val changeSituation = ChangeSituation(
+                    customerData.osNumber,
+                    Situations.CLOSE.value,
+                    messageToCustomer.text.toString(),
+                    getProvider().id,
+                    event
+                )
+                changeSituation(changeSituation)
+            })
+    }
+
+    private fun changeSituation(situation: ChangeSituation) {
+        RequestController.changeSituation(situation, object : Callback<JSONObject> {
+            override fun onFailure(call: Call<JSONObject>?, t: Throwable?) {
+                errorMessage()
+            }
+
+            override fun onResponse(call: Call<JSONObject>?, response: Response<JSONObject>?) {
+                if (response?.isSuccessful!!) {
+                    val complement =
+                        if (situation.situationId == Situations.WORK_IN_PROGRESS.value) "iniciado" else "finalizado"
+
+                    AlertDialogUtil.showMessageOK(this@OpenServiceDetailActivity,
+                        message = "Atendimento $complement com sucesso.",
+                        okListener = DialogInterface.OnClickListener { _, _ ->
+                            finish()
+                        })
+                } else {
+                    errorMessage()
+                }
+            }
+
+            private fun errorMessage() {
+                val complement =
+                    if (situation.situationId == Situations.WORK_IN_PROGRESS.value) "iniciar" else "finalizar"
+                showMessage(osDetailLayout, "Não foi possível $complement o atendimento a esta OS.")
+            }
+        })
     }
 
     private fun addValueStyled(textView: TextView, value: String) {

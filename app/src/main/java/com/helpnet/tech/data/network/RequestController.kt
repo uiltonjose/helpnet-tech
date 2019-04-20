@@ -1,9 +1,11 @@
 package com.helpnet.tech.data.network
 
+import com.helpnet.tech.data.model.ChangeSituation
 import com.helpnet.tech.data.model.Situation
 import com.helpnet.tech.data.model.response.GetUserInfoResponse
 import com.helpnet.tech.data.model.response.OSResponse
 import com.helpnet.tech.data.model.response.OsDetailResponse
+import org.json.JSONObject
 import retrofit2.Callback
 
 object RequestController {
@@ -37,8 +39,8 @@ object RequestController {
         call.enqueue(callbackResponse)
     }
 
-//    fun listOpenOS(providerId: Int, situationId: Int, callbackResponse: Callback<List<OS>>) {
-//        val call = apiController.listOpenOS(providerId, situationId)
-//        call.enqueue(callbackResponse)
-//    }
+    fun changeSituation(changeSituation: ChangeSituation, callbackResponse: Callback<JSONObject>) {
+        val call = apiController.changeSituation(changeSituation)
+        call.enqueue(callbackResponse)
+    }
 }

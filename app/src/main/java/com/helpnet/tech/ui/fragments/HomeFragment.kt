@@ -35,8 +35,8 @@ class HomeFragment : Fragment() {
         return rootView
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         fetchOpenServiceOrder()
     }
 
