@@ -55,6 +55,8 @@
     <string name="name">Nome</string>
     <string name="email">Email</string>
     <string name="edit">Editar</string>
+    <string name="logout">Sair</string>
+    <string name="logout_message">Tem certeza que deseja sair?</string>
 
 
 </resources>
