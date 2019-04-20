@@ -14,6 +14,7 @@ import com.helpnet.tech.R
 import com.helpnet.tech.data.model.OSsimple
 import com.helpnet.tech.data.model.response.OSResponse
 import com.helpnet.tech.data.network.RequestController
+import com.helpnet.tech.ui.activities.BaseActivity
 import com.helpnet.tech.ui.adapters.ServiceOrderAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.loading_layout.*
@@ -40,8 +41,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchOpenServiceOrder() {
-        //TODO pass the current ProviderId
-        RequestController.listOpenOS(3, object : Callback<OSResponse> {
+        val provider = (activity as BaseActivity).getProvider()
+
+        RequestController.listOpenOS(provider.providerId, object : Callback<OSResponse> {
             override fun onFailure(call: Call<OSResponse>?, t: Throwable?) {
                 val messageError = "Something went wrong... ${t?.message}"
                 showPageError(messageError)
@@ -52,7 +54,7 @@ class HomeFragment : Fragment() {
                     val body = response.body()
                     body?.osList?.also {
                         setupViews(it)
-                    }?: Toast.makeText(this@HomeFragment.activity, "Shiiiiii", Toast.LENGTH_LONG).show()
+                    } ?: Toast.makeText(this@HomeFragment.activity, "Shiiiiii", Toast.LENGTH_LONG).show()
 
                 } else {
                     Toast.makeText(this@HomeFragment.activity, "Shiiiiii", Toast.LENGTH_LONG).show()

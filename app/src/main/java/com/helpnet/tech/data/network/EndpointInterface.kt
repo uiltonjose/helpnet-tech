@@ -1,6 +1,7 @@
 package com.helpnet.tech.data.network
 
 import com.helpnet.tech.data.model.Situation
+import com.helpnet.tech.data.model.response.GetUserInfoResponse
 import com.helpnet.tech.data.model.response.OSResponse
 import com.helpnet.tech.data.model.response.OsDetailResponse
 import retrofit2.Call
@@ -33,6 +34,12 @@ interface EndpointInterface {
     fun getOsDetailByNumber(
         @Query("numberOS") numberOS: Long
     ): Call<OsDetailResponse>
+
+    @Headers(CONTENT_TYPE_JSON)
+    @GET("user/info")
+    fun getUserInfo(
+        @Query("userLogin") numberOS: String
+    ): Call<GetUserInfoResponse>
 
 //    @Headers(CONTENT_TYPE_JSON)
 //    @POST("os/register")

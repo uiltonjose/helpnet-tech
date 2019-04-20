@@ -1,6 +1,7 @@
 package com.helpnet.tech.data.network
 
 import com.helpnet.tech.data.model.Situation
+import com.helpnet.tech.data.model.response.GetUserInfoResponse
 import com.helpnet.tech.data.model.response.OSResponse
 import com.helpnet.tech.data.model.response.OsDetailResponse
 import retrofit2.Callback
@@ -28,6 +29,11 @@ object RequestController {
 
     fun getOsDetailByNumber(osNumber: Long, callbackResponse: Callback<OsDetailResponse>) {
         val call = apiController.getOsDetailByNumber(osNumber)
+        call.enqueue(callbackResponse)
+    }
+
+    fun getUserInfo(email: String, callbackResponse: Callback<GetUserInfoResponse>) {
+        val call = apiController.getUserInfo(email)
         call.enqueue(callbackResponse)
     }
 

@@ -7,7 +7,8 @@ buildscript {
     ext.retrofit_version = '2.0.1'
     ext.okHttp_version = '3.2.0'
     ext.glide_version = '3.7.0'
-    ext.firebase_core_version = '16.0.7'
+    ext.firebase_core_version = '16.0.8'
+    ext.firebase_auth_version = '16.2.1'
     ext.leakcanary_version = '1.6.3'
 
     repositories {
@@ -18,6 +19,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.0.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

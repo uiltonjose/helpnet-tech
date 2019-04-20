@@ -13,6 +13,7 @@ import com.helpnet.tech.R
 import com.helpnet.tech.data.model.OSsimple
 import com.helpnet.tech.data.model.response.OSResponse
 import com.helpnet.tech.data.network.RequestController
+import com.helpnet.tech.ui.activities.BaseActivity
 import com.helpnet.tech.ui.adapters.ServiceOrderAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.loading_layout.*
@@ -38,8 +39,9 @@ class InProgressFragment : Fragment() {
     }
 
     private fun fetchOpenServiceOrder() {
-        //TODO pass the current ProviderId
-        RequestController.listInProgressOS(3, object : Callback<OSResponse> {
+        val provider = (activity as BaseActivity).getProvider()
+
+        RequestController.listInProgressOS(provider.providerId, object : Callback<OSResponse> {
             override fun onFailure(call: Call<OSResponse>?, t: Throwable?) {
                 Toast.makeText(this@InProgressFragment.context, "Shiiiiii", Toast.LENGTH_LONG).show()
             }

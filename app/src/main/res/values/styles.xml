@@ -11,6 +11,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.ProgressColor">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
+
     <style name="ToolbarTheme" parent="ThemeOverlay.MaterialComponents.ActionBar">
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>

@@ -1,11 +1,8 @@
 package com.helpnet.tech.ui.activities
 
 import android.annotation.SuppressLint
-import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.PorterDuff
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.*
@@ -21,19 +18,28 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.helpnet.tech.R
+import com.helpnet.tech.data.model.UserInfo
+import com.helpnet.tech.util.SharedPreferenceUtil
 
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
 
     private var requestManager: RequestManager? = null
     private var toolbar: Toolbar? = null
+    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         init()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        auth = FirebaseAuth.getInstance()
     }
 
     private fun init() {
@@ -147,6 +153,10 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     protected fun showMessage(view: View?, message: Int) {
+        showMessage(view, getString(message))
+    }
+
+    protected fun showMessage(view: View?, message: String) {
         view?.also {
             Snackbar.make(view, message, Snackbar.LENGTH_LONG).show()
         }
@@ -158,5 +168,10 @@ open class BaseActivity : AppCompatActivity() {
         } else {
             Html.fromHtml(html)
         }
+    }
+
+    fun getProvider(): UserInfo {
+        val providerJson = SharedPreferenceUtil.getProviderJson(this)
+        return Gson().fromJson(providerJson, UserInfo::class.java)
     }
 }

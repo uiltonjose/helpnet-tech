@@ -12,6 +12,10 @@
     <string name="email_hint">Endereço de Email</string>
     <string name="password_hint">Senha</string>
     <string name="login_button">Logar</string>
+    <string name="email_required">Email obrigatório</string>
+    <string name="password_required">Senha obrigatória</string>
+    <string name="invalid_login">Usuário ou Senha inválidos</string>
+    <string name="fail_obtain_user_info">Falha ao tentar obter os dados do usuário. Por favor, tente novamente.</string>
 
     <!--Service Order Detail-->
     <string name="os_detail_screen_title">Detalhes da OS</string>
@@ -38,6 +42,8 @@
     <string name="addressNeighbor"><![CDATA[<b>Bairro:</b> %s]]></string>
     <string name="addressCity"><![CDATA[<b>Cidade:</b> %s]]></string>
     <string name="login">LOGIN</string>
+    <string name="do_login">Logar</string>
     <string name="forgot_password">Esqueceu a senha?</string>
+
 
 </resources>

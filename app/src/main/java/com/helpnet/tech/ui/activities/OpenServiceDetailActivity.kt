@@ -1,12 +1,9 @@
 package com.helpnet.tech.ui.activities
 
-import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.helpnet.tech.R
 import com.helpnet.tech.data.model.response.CustomerData
 import com.helpnet.tech.data.model.response.OsDetailResponse
@@ -107,11 +104,6 @@ class OpenServiceDetailActivity : BaseActivity() {
     }
 
     private fun addValueStyled(textView: TextView, value: String) {
-        val fromHtml = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Html.fromHtml(value, Html.FROM_HTML_MODE_LEGACY)
-        } else {
-            Html.fromHtml(value)
-        }
-        textView.text = fromHtml
+        textView.text = fromHtml(value)
     }
 }
