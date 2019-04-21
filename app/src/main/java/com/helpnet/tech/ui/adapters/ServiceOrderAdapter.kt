@@ -9,7 +9,7 @@ import com.helpnet.tech.data.model.OSsimple
 
 class ServiceOrderAdapter constructor(
     val listOS: List<OSsimple>,
-    val isInProgress: Boolean = false
+    private val isInProgress: Boolean = false
 ) : RecyclerView.Adapter<ServiceOrderHolder>() {
 
     @SuppressLint("InflateParams")

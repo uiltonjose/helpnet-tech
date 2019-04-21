@@ -25,15 +25,16 @@ class MainActivity : BaseActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commit()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_toolbar, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        //TODO Missing handle notification icon
-        return super.onOptionsItemSelected(item)
-    }
+    //FIXME For notifications.
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu_toolbar, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+//        //TODO Missing handle notification icon
+//        return super.onOptionsItemSelected(item)
+//    }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         val fragmentSelected: Fragment? = when (item.itemId) {

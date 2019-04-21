@@ -69,7 +69,9 @@ class InProgressFragment : Fragment() {
             list_os.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
             osList.sortedWith(Comparator { o1, o2 -> o2?.dateOpen!!.compareTo(o1?.dateOpen!!) }).let {
-                list_os.swapAdapter(ServiceOrderAdapter(it, true), false)
+                val serviceOrderAdapter = ServiceOrderAdapter(it, true)
+                list_os.adapter = serviceOrderAdapter
+                list_os.adapter?.notifyDataSetChanged()
             }
         } else {
             tv_empty_list.visibility = View.VISIBLE
