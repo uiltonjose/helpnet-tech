@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/userNameTextView"
+            style="@style/TextDetail"
+            tools:text="Técnico: Juvenal Bartolomeu"/>
+
+    <TextView
+            android:id="@+id/providerNameTextView"
+            style="@style/TextDetail"
+            tools:text="Provedor: Lagoa Net"/>
+
+    <TextView
+            android:id="@+id/customerCodeTextView"
+            style="@style/TextDetail"
+            tools:text="Código do cliente: 5678902"/>
+
+    <TextView
+            android:id="@+id/providerPhoneTextView"
+            style="@style/TextDetail"
+            tools:text="Telefone: (81) 3492-8918"/>
+
+    <TextView
+            android:id="@+id/providerCellphoneTextView"
+            style="@style/TextDetail"
+            tools:text="Celular: (81) 3492-8918"/>
+</LinearLayout>

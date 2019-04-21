@@ -98,11 +98,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    open fun downloadResource(url: String, imageView: ImageView?) {
-        downloadResource(url, imageView, true)
-    }
-
-    open fun downloadResource(url: String, imageView: ImageView?, centerCrop: Boolean) {
+    open fun downloadResource(url: String, imageView: ImageView?, centerCrop: Boolean = true) {
 
         if (requestManager != null) {
             if (centerCrop) {
@@ -170,7 +166,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun getProvider(): UserInfo {
+    fun getUserInfo(): UserInfo {
         val providerJson = SharedPreferenceUtil.getProviderJson(this)
         return Gson().fromJson(providerJson, UserInfo::class.java)
     }

@@ -57,6 +57,11 @@
     <string name="edit">Editar</string>
     <string name="logout">Sair</string>
     <string name="logout_message">Tem certeza que deseja sair?</string>
-
+    <string name="profile_information">Informações</string>
+    <string name="providerName"><![CDATA[<b>Provedor:</b> %s]]></string>
+    <string name="customerCode"><![CDATA[<b>Código de acesso do cliente:</b> %s]]></string>
+    <string name="phoneProvider"><![CDATA[<b>Telefone:</b> %s]]></string>
+    <string name="cellphoneProvider"><![CDATA[<b>Celular:</b> %s]]></string>
+    <string name="userNameProfile"><![CDATA[<b>Técnico:</b> %s]]></string>
 
 </resources>

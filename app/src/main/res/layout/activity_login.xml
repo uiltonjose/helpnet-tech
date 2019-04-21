@@ -104,8 +104,6 @@
             app:cornerRadius="20dp"
             android:layout_below="@+id/inputFields"
             android:layout_marginTop="-40dp"
-            android:layout_marginStart="45dp"
-            android:layout_marginEnd="45dp"
             android:layout_centerHorizontal="true"
             android:textStyle="normal"
             android:textSize="14sp"

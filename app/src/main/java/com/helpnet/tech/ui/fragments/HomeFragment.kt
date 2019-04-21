@@ -41,9 +41,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchOpenServiceOrder() {
-        val provider = (activity as BaseActivity).getProvider()
+        val userInfo = (activity as BaseActivity).getUserInfo()
 
-        RequestController.listOpenOS(provider.providerId, object : Callback<OSResponse> {
+        RequestController.listOpenOS(userInfo.providerId, object : Callback<OSResponse> {
             override fun onFailure(call: Call<OSResponse>?, t: Throwable?) {
                 val messageError = "Something went wrong... ${t?.message}"
                 showPageError(messageError)

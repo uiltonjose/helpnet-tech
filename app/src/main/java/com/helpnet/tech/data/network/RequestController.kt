@@ -5,6 +5,7 @@ import com.helpnet.tech.data.model.Situation
 import com.helpnet.tech.data.model.response.GetUserInfoResponse
 import com.helpnet.tech.data.model.response.OSResponse
 import com.helpnet.tech.data.model.response.OsDetailResponse
+import com.helpnet.tech.data.model.response.ProviderResponse
 import org.json.JSONObject
 import retrofit2.Callback
 
@@ -41,6 +42,11 @@ object RequestController {
 
     fun changeSituation(changeSituation: ChangeSituation, callbackResponse: Callback<JSONObject>) {
         val call = apiController.changeSituation(changeSituation)
+        call.enqueue(callbackResponse)
+    }
+
+    fun getProviderById(providerId: Int, callbackResponse: Callback<ProviderResponse>) {
+        val call = apiController.getProviderById(providerId)
         call.enqueue(callbackResponse)
     }
 }

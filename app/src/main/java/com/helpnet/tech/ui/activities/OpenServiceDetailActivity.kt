@@ -115,7 +115,7 @@ class OpenServiceDetailActivity : BaseActivity() {
             okListener = DialogInterface.OnClickListener { _, _ ->
 
                 val event = Event(
-                    getProvider().id,
+                    getUserInfo().id,
                     EventType.PUT_IN_PROGRESS.value,
                     ""
                 )
@@ -124,7 +124,7 @@ class OpenServiceDetailActivity : BaseActivity() {
                     customerData.osNumber,
                     Situations.WORK_IN_PROGRESS.value,
                     null,
-                    getProvider().id,
+                    getUserInfo().id,
                     event
                 )
                 changeSituation(changeSituation)
@@ -142,7 +142,7 @@ class OpenServiceDetailActivity : BaseActivity() {
             okListener = DialogInterface.OnClickListener { _, _ ->
 
                 val event = Event(
-                    getProvider().id,
+                    getUserInfo().id,
                     EventType.CLOSE_OS.value,
                     problemResolution.text.toString()
                 )
@@ -151,7 +151,7 @@ class OpenServiceDetailActivity : BaseActivity() {
                     customerData.osNumber,
                     Situations.CLOSE.value,
                     messageToCustomer.text.toString(),
-                    getProvider().id,
+                    getUserInfo().id,
                     event
                 )
                 changeSituation(changeSituation)
