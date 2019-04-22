@@ -59,6 +59,7 @@ class LoginActivity : BaseActivity() {
     private fun goToHomeScreen() {
         Intent(this@LoginActivity, MainActivity::class.java).apply {
             startActivity(this)
+            finish()
         }
     }
 

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -68,6 +69,8 @@ class HomeFragment : Fragment() {
         layout_loading.visibility = GONE
 
         if (osList.isNotEmpty()) {
+            tv_empty_list.visibility = GONE
+
             list_os.setHasFixedSize(true)
             list_os.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
@@ -77,13 +80,14 @@ class HomeFragment : Fragment() {
                 list_os.adapter?.notifyDataSetChanged()
             }
         } else {
-            tv_empty_list.visibility = View.VISIBLE
+            list_os.visibility = GONE
+            tv_empty_list.visibility = VISIBLE
         }
     }
 
     private fun showPageError(message: String) {
         layout_loading.visibility = GONE
-        tv_empty_list.visibility = View.VISIBLE
+        tv_empty_list.visibility = VISIBLE
         tv_empty_list.text = message
     }
 }

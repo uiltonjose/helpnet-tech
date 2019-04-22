@@ -4,6 +4,8 @@ package com.helpnet.tech.ui.fragments
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -62,9 +64,11 @@ class InProgressFragment : Fragment() {
     }
 
     private fun setupViews(osList: List<OSsimple>) {
-        layout_loading.visibility = View.GONE
+        layout_loading.visibility = GONE
 
         if (osList.isNotEmpty()) {
+            tv_empty_list.visibility = GONE
+
             list_os.setHasFixedSize(true)
             list_os.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
@@ -74,7 +78,8 @@ class InProgressFragment : Fragment() {
                 list_os.adapter?.notifyDataSetChanged()
             }
         } else {
-            tv_empty_list.visibility = View.VISIBLE
+            list_os.visibility = GONE
+            tv_empty_list.visibility = VISIBLE
         }
     }
 }
