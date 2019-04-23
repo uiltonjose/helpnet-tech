@@ -64,7 +64,7 @@ class ProfileFragment : Fragment() {
         userInfo: UserInfo
     ) {
         val baseActivity = activity as BaseActivity
-        baseActivity.downloadResource(provider.logo, providerLogoImageView, false)
+        baseActivity.downloadResource(provider.getLogo(), providerLogoImageView, false)
 
         userNameTextView.text = baseActivity.fromHtml(getString(R.string.userNameProfile, userInfo.login))
         providerNameTextView.text = baseActivity.fromHtml(getString(R.string.providerName, provider.providerName))

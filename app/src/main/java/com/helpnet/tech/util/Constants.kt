@@ -3,7 +3,8 @@ package com.helpnet.tech.util
 object Constants {
     const val OS_NUMBER_PARAM = "osNumberParam"
     const val OS_WIP_PARAM = "osWipParam"
-
+    const val DEFAULT_LOGO =
+        "https://firebasestorage.googleapis.com/v0/b/helpnet-3a519.appspot.com/o/provider%2Flogo-default.png?alt=media&token=9fa874f2-d830-460e-8980-1faf3b763850"
 
 }
 
