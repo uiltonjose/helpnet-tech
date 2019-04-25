@@ -8,21 +8,32 @@ import android.widget.Toast
 import com.helpnet.tech.R
 import com.helpnet.tech.data.model.ChangeSituation
 import com.helpnet.tech.data.model.Event
-import com.helpnet.tech.data.model.response.CustomerData
-import com.helpnet.tech.data.model.response.OsDetailResponse
+import com.helpnet.tech.data.network.response.CustomerData
+import com.helpnet.tech.data.network.response.OsDetailResponse
 import com.helpnet.tech.data.network.RequestController
 import com.helpnet.tech.util.AlertDialogUtil
 import com.helpnet.tech.util.Constants
 import com.helpnet.tech.util.EventType
 import com.helpnet.tech.util.Situations
-import kotlinx.android.synthetic.main.activity_os_detail.*
-import kotlinx.android.synthetic.main.content_customer_detail.*
-import kotlinx.android.synthetic.main.content_os_detail.*
+import kotlinx.android.synthetic.main.activity_os_detail.osDetailLayout
+import kotlinx.android.synthetic.main.activity_os_detail.startFinishServiceCTA
+import kotlinx.android.synthetic.main.content_customer_detail.addressNumberTextView
+import kotlinx.android.synthetic.main.content_customer_detail.addressTextView
+import kotlinx.android.synthetic.main.content_customer_detail.cellphoneTextView
+import kotlinx.android.synthetic.main.content_customer_detail.cityTextView
+import kotlinx.android.synthetic.main.content_customer_detail.customerIDTextView
+import kotlinx.android.synthetic.main.content_customer_detail.customerNameTextView
+import kotlinx.android.synthetic.main.content_customer_detail.neighborTextView
+import kotlinx.android.synthetic.main.content_customer_detail.phoneTextView
+import kotlinx.android.synthetic.main.content_customer_detail.planDetailTextView
+import kotlinx.android.synthetic.main.content_customer_detail.referenceDescriptionTextView
+import kotlinx.android.synthetic.main.content_os_detail.osDetailDescriptionTextView
+import kotlinx.android.synthetic.main.content_os_detail.osNumberTextView
+import kotlinx.android.synthetic.main.content_os_detail.problemDescriptionTextView
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class OpenServiceDetailActivity : BaseActivity() {
 
@@ -41,14 +52,14 @@ class OpenServiceDetailActivity : BaseActivity() {
     private fun fetchOsDetail() {
         val osNumber: Long = intent?.extras?.getLong(Constants.OS_NUMBER_PARAM) ?: 0L
         if (osNumber == 0L) {
-            //TODO handle this better
+            // TODO handle this better
             Toast.makeText(this, "Something went wrong...", Toast.LENGTH_LONG).show()
             finish()
         }
 
         RequestController.getOsDetailByNumber(osNumber, object : Callback<OsDetailResponse> {
             override fun onFailure(call: Call<OsDetailResponse>?, t: Throwable?) {
-                //TODO handle this better
+                // TODO handle this better
                 Toast.makeText(this@OpenServiceDetailActivity, "Shiiiiteee", Toast.LENGTH_LONG).show()
             }
 
@@ -60,10 +71,10 @@ class OpenServiceDetailActivity : BaseActivity() {
                         this@OpenServiceDetailActivity,
                         "Something went wrong...",
                         Toast.LENGTH_LONG
-                        //TODO handle this better
+                        // TODO handle this better
                     ).show()
                 } else {
-                    //TODO handle this better
+                    // TODO handle this better
                     Toast.makeText(this@OpenServiceDetailActivity, "Something went wrong...", Toast.LENGTH_LONG).show()
                 }
             }
@@ -71,13 +82,13 @@ class OpenServiceDetailActivity : BaseActivity() {
     }
 
     private fun setupViews(customerData: CustomerData) {
-        //Os Data
+        // Os Data
 
         addValueStyled(osNumberTextView, getString(R.string.osNumber, customerData.osNumber.toString()))
         addValueStyled(problemDescriptionTextView, getString(R.string.problemData, customerData.problem))
         addValueStyled(osDetailDescriptionTextView, getString(R.string.osDetailData, customerData.detailOS))
 
-        //Customer Data
+        // Customer Data
         addValueStyled(customerIDTextView, getString(R.string.customerID, customerData.cpfCnpj))
         addValueStyled(customerNameTextView, getString(R.string.customerName, customerData.customerName))
         addValueStyled(
@@ -89,7 +100,7 @@ class OpenServiceDetailActivity : BaseActivity() {
         addValueStyled(planDetailTextView, getString(R.string.plainDetail, customerData.plan))
         addValueStyled(planDetailTextView, getString(R.string.plainDetail, customerData.plan))
 
-        //Address
+        // Address
         addValueStyled(addressTextView, getString(R.string.addressCustomer, customerData.address))
         addValueStyled(addressNumberTextView, getString(R.string.addressNumber, customerData.addressNumber))
         addValueStyled(neighborTextView, getString(R.string.addressNeighbor, customerData.neighbor))

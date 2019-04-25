@@ -1,17 +1,13 @@
 package com.helpnet.tech.ui.activities
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.helpnet.tech.R
 import com.helpnet.tech.ui.fragments.HomeFragment
 import com.helpnet.tech.ui.fragments.InProgressFragment
 import com.helpnet.tech.ui.fragments.ProfileFragment
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.activity_main.bottom_navigation
 
 class MainActivity : BaseActivity() {
 
@@ -25,14 +21,14 @@ class MainActivity : BaseActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commit()
     }
 
-    //FIXME For notifications.
+    // FIXME For notifications.
 //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 //        menuInflater.inflate(R.menu.menu_toolbar, menu)
 //        return true
 //    }
 //
 //    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-//        //TODO Missing handle notification icon
+//        // TODO Missing handle notification icon
 //        return super.onOptionsItemSelected(item)
 //    }
 

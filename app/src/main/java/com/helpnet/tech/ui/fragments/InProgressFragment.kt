@@ -1,6 +1,5 @@
 package com.helpnet.tech.ui.fragments
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,22 +12,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.helpnet.tech.R
 import com.helpnet.tech.data.model.OSsimple
-import com.helpnet.tech.data.model.response.OSResponse
+import com.helpnet.tech.data.network.response.OSResponse
 import com.helpnet.tech.data.network.RequestController
 import com.helpnet.tech.ui.activities.BaseActivity
 import com.helpnet.tech.ui.adapters.ServiceOrderAdapter
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.loading_layout.*
+import kotlinx.android.synthetic.main.fragment_home.list_os
+import kotlinx.android.synthetic.main.fragment_home.tv_empty_list
+import kotlinx.android.synthetic.main.loading_layout.layout_loading
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class InProgressFragment : Fragment() {
     private lateinit var rootView: View
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         rootView = inflater.inflate(R.layout.fragment_home, container, false)
@@ -54,12 +54,10 @@ class InProgressFragment : Fragment() {
                     body?.osList?.also {
                         setupViews(it)
                     } ?: Toast.makeText(this@InProgressFragment.context, "Shiiiiii", Toast.LENGTH_LONG).show()
-
                 } else {
                     Toast.makeText(this@InProgressFragment.context, "Shiiiiii", Toast.LENGTH_LONG).show()
                 }
             }
-
         })
     }
 

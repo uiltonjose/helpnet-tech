@@ -2,13 +2,17 @@ package com.helpnet.tech.data.network
 
 import com.helpnet.tech.data.model.ChangeSituation
 import com.helpnet.tech.data.model.Situation
-import com.helpnet.tech.data.model.response.GetUserInfoResponse
-import com.helpnet.tech.data.model.response.OSResponse
-import com.helpnet.tech.data.model.response.OsDetailResponse
-import com.helpnet.tech.data.model.response.ProviderResponse
+import com.helpnet.tech.data.network.response.GetUserInfoResponse
+import com.helpnet.tech.data.network.response.OSResponse
+import com.helpnet.tech.data.network.response.OsDetailResponse
+import com.helpnet.tech.data.network.response.ProviderResponse
 import org.json.JSONObject
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 const val CONTENT_TYPE_JSON = "Content-Type:application/json"
 

@@ -13,13 +13,17 @@ import com.google.firebase.auth.FirebaseAuth
 import com.helpnet.tech.R
 import com.helpnet.tech.data.model.Provider
 import com.helpnet.tech.data.model.UserInfo
-import com.helpnet.tech.data.model.response.ProviderResponse
+import com.helpnet.tech.data.network.response.ProviderResponse
 import com.helpnet.tech.data.network.RequestController
 import com.helpnet.tech.ui.activities.BaseActivity
 import com.helpnet.tech.ui.activities.LoginActivity
 import com.helpnet.tech.util.AlertDialogUtil
-import kotlinx.android.synthetic.main.content_profile_data.*
-import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.content_profile_data.customerCodeTextView
+import kotlinx.android.synthetic.main.content_profile_data.providerCellphoneTextView
+import kotlinx.android.synthetic.main.content_profile_data.providerNameTextView
+import kotlinx.android.synthetic.main.content_profile_data.providerPhoneTextView
+import kotlinx.android.synthetic.main.content_profile_data.userNameTextView
+import kotlinx.android.synthetic.main.fragment_profile.providerLogoImageView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,7 +31,8 @@ import retrofit2.Response
 class ProfileFragment : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 

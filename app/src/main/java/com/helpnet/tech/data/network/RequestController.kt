@@ -2,10 +2,10 @@ package com.helpnet.tech.data.network
 
 import com.helpnet.tech.data.model.ChangeSituation
 import com.helpnet.tech.data.model.Situation
-import com.helpnet.tech.data.model.response.GetUserInfoResponse
-import com.helpnet.tech.data.model.response.OSResponse
-import com.helpnet.tech.data.model.response.OsDetailResponse
-import com.helpnet.tech.data.model.response.ProviderResponse
+import com.helpnet.tech.data.network.response.GetUserInfoResponse
+import com.helpnet.tech.data.network.response.OSResponse
+import com.helpnet.tech.data.network.response.OsDetailResponse
+import com.helpnet.tech.data.network.response.ProviderResponse
 import org.json.JSONObject
 import retrofit2.Callback
 

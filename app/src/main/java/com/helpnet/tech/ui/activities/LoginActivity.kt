@@ -5,10 +5,15 @@ import android.os.Bundle
 import android.view.View
 import com.google.gson.Gson
 import com.helpnet.tech.R
-import com.helpnet.tech.data.model.response.GetUserInfoResponse
+import com.helpnet.tech.data.network.response.GetUserInfoResponse
 import com.helpnet.tech.data.network.RequestController
 import com.helpnet.tech.util.SharedPreferenceUtil
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.etUserEmail
+import kotlinx.android.synthetic.main.activity_login.etUserPassword
+import kotlinx.android.synthetic.main.activity_login.loginButton
+import kotlinx.android.synthetic.main.activity_login.progressIndicator
+import kotlinx.android.synthetic.main.activity_login.tilUserEmail
+import kotlinx.android.synthetic.main.activity_login.tilUserPassword
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -107,7 +112,6 @@ class LoginActivity : BaseActivity() {
                     showMessage(etUserEmail, getString(R.string.fail_obtain_user_info))
                 }
             }
-
         })
     }
 }

@@ -5,7 +5,11 @@ import android.graphics.Bitmap
 import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
-import android.text.*
+import android.text.Editable
+import android.text.Html
+import android.text.Spanned
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
