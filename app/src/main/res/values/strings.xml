@@ -64,4 +64,7 @@
     <string name="cellphoneProvider"><![CDATA[<b>Celular:</b> %s]]></string>
     <string name="userNameProfile"><![CDATA[<b>Técnico:</b> %s]]></string>
 
+    <!--List-->
+    <string name="fail_obtain_os_list">Erro ao tentar obter a lista dos serviços. Por favor, tente novamente.</string>
+
 </resources>

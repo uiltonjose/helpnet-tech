@@ -3,10 +3,12 @@ package com.helpnet.tech.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import com.google.gson.Gson
 import com.helpnet.tech.R
 import com.helpnet.tech.data.network.response.GetUserInfoResponse
 import com.helpnet.tech.data.network.RequestController
+import com.helpnet.tech.util.AndroidUtil
 import com.helpnet.tech.util.SharedPreferenceUtil
 import kotlinx.android.synthetic.main.activity_login.etUserEmail
 import kotlinx.android.synthetic.main.activity_login.etUserPassword
@@ -32,23 +34,36 @@ class LoginActivity : BaseActivity() {
         etUserEmail.addTextChangedListener(editTextWatcherListener(tilUserEmail))
         editTextWatcherListener(tilUserPassword)
         etUserPassword.addTextChangedListener(editTextWatcherListener(tilUserPassword))
+        etUserPassword.setOnEditorActionListener { _, actionID, _ ->
+            var handled = false
+            if (actionID == EditorInfo.IME_ACTION_DONE) {
+                dispatchLogin()
+                handled = true
+            }
+            return@setOnEditorActionListener handled
+        }
 
         loginButton.setOnClickListener {
-            progressIndicator()
+            dispatchLogin()
+        }
+    }
 
-            if (validateInputLogin()) {
-                auth.signInWithEmailAndPassword(etUserEmail.text.toString(), etUserPassword.text.toString())
-                    .addOnCompleteListener(this@LoginActivity) { task ->
-                        if (task.isSuccessful) {
-                            fetchUserInfo()
-                        } else {
-                            showMessage(etUserEmail, R.string.invalid_login)
-                            progressIndicator(false)
-                        }
+    private fun dispatchLogin() {
+        AndroidUtil.hideSoftKeyboard(etUserPassword, this)
+        progressIndicator()
+
+        if (validateInputLogin()) {
+            auth.signInWithEmailAndPassword(etUserEmail.text.toString(), etUserPassword.text.toString())
+                .addOnCompleteListener(this@LoginActivity) { task ->
+                    if (task.isSuccessful) {
+                        fetchUserInfo()
+                    } else {
+                        showMessage(etUserEmail, R.string.invalid_login)
+                        progressIndicator(false)
                     }
-            } else {
-                progressIndicator(false)
-            }
+                }
+        } else {
+            progressIndicator(false)
         }
     }
 
