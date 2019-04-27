@@ -2,15 +2,17 @@ package com.helpnet.tech.ui.activities
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.os.Handler
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.helpnet.tech.R
 import com.helpnet.tech.data.model.ChangeSituation
 import com.helpnet.tech.data.model.Event
+import com.helpnet.tech.data.network.RequestController
 import com.helpnet.tech.data.network.response.CustomerData
 import com.helpnet.tech.data.network.response.OsDetailResponse
-import com.helpnet.tech.data.network.RequestController
+import com.helpnet.tech.internal.NoConnectivityException
+import com.helpnet.tech.ui.fragments.NetworkScreenFragment
 import com.helpnet.tech.util.AlertDialogUtil
 import com.helpnet.tech.util.Constants
 import com.helpnet.tech.util.EventType
@@ -52,33 +54,36 @@ class OpenServiceDetailActivity : BaseActivity() {
     private fun fetchOsDetail() {
         val osNumber: Long = intent?.extras?.getLong(Constants.OS_NUMBER_PARAM) ?: 0L
         if (osNumber == 0L) {
-            // TODO handle this better
-            Toast.makeText(this, "Something went wrong...", Toast.LENGTH_LONG).show()
-            finish()
+            handleFailObtainOsDetail()
+            return
         }
 
         RequestController.getOsDetailByNumber(osNumber, object : Callback<OsDetailResponse> {
             override fun onFailure(call: Call<OsDetailResponse>?, t: Throwable?) {
-                // TODO handle this better
-                Toast.makeText(this@OpenServiceDetailActivity, "Shiiiiteee", Toast.LENGTH_LONG).show()
+                handleFailObtainOsDetail()
             }
 
             override fun onResponse(call: Call<OsDetailResponse>?, response: Response<OsDetailResponse>?) {
                 if (response?.isSuccessful!!) {
                     response.body()?.also {
                         setupViews(it.customerData)
-                    } ?: Toast.makeText(
-                        this@OpenServiceDetailActivity,
-                        "Something went wrong...",
-                        Toast.LENGTH_LONG
-                        // TODO handle this better
-                    ).show()
+                    } ?: handleFailObtainOsDetail()
                 } else {
-                    // TODO handle this better
-                    Toast.makeText(this@OpenServiceDetailActivity, "Something went wrong...", Toast.LENGTH_LONG).show()
+                    handleFailObtainOsDetail()
                 }
             }
         })
+    }
+
+    private fun handleFailObtainOsDetail() {
+        Handler().post {
+            AlertDialogUtil.showMessageOK(this@OpenServiceDetailActivity,
+                title = getString(R.string.attention_title),
+                message = getString(R.string.fail_obtain_os_detail),
+                okListener = DialogInterface.OnClickListener { _, _ ->
+                    finish()
+                })
+        }
     }
 
     private fun setupViews(customerData: CustomerData) {
@@ -172,7 +177,13 @@ class OpenServiceDetailActivity : BaseActivity() {
     private fun changeSituation(situation: ChangeSituation) {
         RequestController.changeSituation(situation, object : Callback<JSONObject> {
             override fun onFailure(call: Call<JSONObject>?, t: Throwable?) {
-                errorMessage()
+                if (t is NoConnectivityException) {
+                    val ft = supportFragmentManager.beginTransaction()
+                    ft.add(android.R.id.content, NetworkScreenFragment(), NetworkScreenFragment.TAG)
+                    ft.commit()
+                } else {
+                    errorMessage()
+                }
             }
 
             override fun onResponse(call: Call<JSONObject>?, response: Response<JSONObject>?) {

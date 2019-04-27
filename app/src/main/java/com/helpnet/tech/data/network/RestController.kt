@@ -2,6 +2,7 @@ package com.helpnet.tech.data.network
 
 import android.annotation.SuppressLint
 import com.helpnet.tech.HelpNetApplication
+import com.helpnet.tech.internal.NoConnectivityException
 import com.helpnet.tech.util.AndroidUtil
 import com.helpnet.tech.util.SharedPreferenceUtil
 import okhttp3.Cache
@@ -12,8 +13,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-private const val REQUEST_AGE_TIMELAPSE = 10 // 10 seconds
-private const val REQUEST_AGE_FROM_CACHE = 60 * 60 * 24 * 5 // 5 days of cache
+private const val REQUEST_MAX_AGE = 10 // 10 seconds
+private const val REQUEST_MAX_STALE = 60 * 60 * 24 * 5 // 5 days of cache
 
 abstract class RestController {
     companion object {
@@ -63,11 +64,15 @@ abstract class RestController {
             return Interceptor { chain ->
                 var request = chain.request()
                 request = if (AndroidUtil.hasConnectivity(context)) {
-                    request.newBuilder().header("Cache-Control", "public, max-age=$REQUEST_AGE_TIMELAPSE").build()
+                    request.newBuilder().header("Cache-Control", "public, max-age=$REQUEST_MAX_AGE").build()
                 } else {
+                    if (request.method() != "GET") {
+                        throw NoConnectivityException()
+                    }
+
                     request.newBuilder().header(
                         "Cache-Control",
-                        "public, only-if-cached, max-stale=$REQUEST_AGE_FROM_CACHE"
+                        "public, only-if-cached, max-stale=$REQUEST_MAX_STALE"
                     ).build()
                 }
                 return@Interceptor chain.proceed(request)

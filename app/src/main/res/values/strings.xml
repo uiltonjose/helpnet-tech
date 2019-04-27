@@ -66,5 +66,16 @@
 
     <!--List-->
     <string name="fail_obtain_os_list">Erro ao tentar obter a lista dos serviços. Por favor, tente novamente.</string>
+    <string name="attention_title">Atenção</string>
+    <string name="fail_obtain_os_detail">Não foi possível obter os detalhes da OS. Verifique sua rede e tente
+        novamente.
+    </string>
+
+    <string name="no_connection_title">Sem conexão</string>
+    <string name="no_connection_message">No momento você está sem conexão de Internet. Por favor, verifique a sua rede e
+        tente novamente.
+    </string>
+    <string name="close_button">Fechar</string>
+
 
 </resources>
