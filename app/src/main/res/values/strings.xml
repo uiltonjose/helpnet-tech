@@ -1,6 +1,7 @@
 <resources>
     <!--General-->
-    <string name="app_name">HelpNet Tech</string>
+    <string name="app_toolbar_title">HelpNet Tech</string>
+    <string name="app_name">Tech</string>
     <string name="loading_label">Carregando…</string>
     <string name="no_service_available">Nenhuma OS disponível</string>
     <string name="yes">Sim</string>
