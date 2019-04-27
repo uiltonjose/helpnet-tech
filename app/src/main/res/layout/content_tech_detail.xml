@@ -13,27 +13,17 @@
 
         <TextView
                 style="@style/TextTitleDetail"
-                android:drawableStart="@drawable/ic_assignment"
+                android:drawableStart="@drawable/ic_tech_verified"
                 android:drawablePadding="12dp"
-                android:text="@string/service_order_label"/>
+                android:text="@string/tech_responsible_label"/>
 
         <View android:layout_width="match_parent" android:layout_height="1dp"
               android:layout_marginTop="10dp"
               android:background="@color/separator_color"/>
 
         <TextView
-                android:id="@+id/osNumberTextView"
+                android:id="@+id/techResponsibleTextView"
                 style="@style/TextDetail"
-                tools:text="Número OS: 321654987"/>
-
-        <TextView
-                android:id="@+id/problemDescriptionTextView"
-                style="@style/TextDetail"
-                tools:text="Problema: Sem Internet"/>
-
-        <TextView
-                android:id="@+id/osDetailDescriptionTextView"
-                style="@style/TextDetail"
-                tools:text="Detalhe da OS: ggg"/>
+                tools:text="Técnico: Jarvis Computer"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

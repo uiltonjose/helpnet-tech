@@ -24,7 +24,8 @@
     <!--Service Order Detail-->
     <string name="os_detail_screen_title">Detalhes da OS</string>
     <string name="customer_data_label">Dados do cliente</string>
-    <string name="service_ordem_label">Ordem de Serviço</string>
+    <string name="service_order_label">Ordem de Serviço</string>
+    <string name="tech_responsible_label">Técnico</string>
     <string name="address_label">Endereço</string>
     <string name="start_working_cta">Iniciar Atendimento</string>
     <string name="finish_working_cta">Finalizar Atendimento</string>
@@ -35,6 +36,7 @@
     <string name="osNumber"><![CDATA[<b>Número OS:</b> %s]]></string>
     <string name="problemData"><![CDATA[<b>Problema:</b> %s]]></string>
     <string name="osDetailData"><![CDATA[<b>Detalhe da OS:</b> %s]]></string>
+    <string name="techDetailData"><![CDATA[<b>Técnico:</b> %s]]></string>
 
     <!--CustomerData-->
     <string name="customerID"><![CDATA[<b>CPF do cliente:</b> %s]]></string>

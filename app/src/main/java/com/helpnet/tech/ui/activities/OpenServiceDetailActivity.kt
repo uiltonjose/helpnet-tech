@@ -3,6 +3,7 @@ package com.helpnet.tech.ui.activities
 import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
+import android.view.View.VISIBLE
 import android.widget.EditText
 import android.widget.TextView
 import com.helpnet.tech.R
@@ -18,6 +19,7 @@ import com.helpnet.tech.util.Constants
 import com.helpnet.tech.util.EventType
 import com.helpnet.tech.util.Situations
 import kotlinx.android.synthetic.main.activity_os_detail.osDetailLayout
+import kotlinx.android.synthetic.main.activity_os_detail.osResponsibleLayout
 import kotlinx.android.synthetic.main.activity_os_detail.startFinishServiceCTA
 import kotlinx.android.synthetic.main.content_customer_detail.addressNumberTextView
 import kotlinx.android.synthetic.main.content_customer_detail.addressTextView
@@ -32,6 +34,7 @@ import kotlinx.android.synthetic.main.content_customer_detail.referenceDescripti
 import kotlinx.android.synthetic.main.content_os_detail.osDetailDescriptionTextView
 import kotlinx.android.synthetic.main.content_os_detail.osNumberTextView
 import kotlinx.android.synthetic.main.content_os_detail.problemDescriptionTextView
+import kotlinx.android.synthetic.main.content_tech_detail.techResponsibleTextView
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -88,7 +91,6 @@ class OpenServiceDetailActivity : BaseActivity() {
 
     private fun setupViews(customerData: CustomerData) {
         // Os Data
-
         addValueStyled(osNumberTextView, getString(R.string.osNumber, customerData.osNumber.toString()))
         addValueStyled(problemDescriptionTextView, getString(R.string.problemData, customerData.problem))
         addValueStyled(osDetailDescriptionTextView, getString(R.string.osDetailData, customerData.detailOS))
@@ -111,9 +113,13 @@ class OpenServiceDetailActivity : BaseActivity() {
         addValueStyled(neighborTextView, getString(R.string.addressNeighbor, customerData.neighbor))
         addValueStyled(cityTextView, getString(R.string.addressCity, customerData.city))
 
+        // Responsible
+        addValueStyled(techResponsibleTextView, getString(R.string.techDetailData, customerData.events.last().osResponsible))
+
         val isWIPStatus = intent?.extras?.getBoolean(Constants.OS_WIP_PARAM)!!
         if (isWIPStatus) {
-            startFinishServiceCTA.text = getString(R.string.finish_working_cta)
+            osResponsibleLayout.visibility = VISIBLE
+            startFinishServiceCTA.text = getString(R.string.finish_working_cta).toString()
             startFinishServiceCTA.setOnClickListener {
                 finishOSAttend(customerData)
             }

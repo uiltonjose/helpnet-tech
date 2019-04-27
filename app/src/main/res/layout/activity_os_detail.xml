@@ -23,6 +23,10 @@
             <include layout="@layout/content_customer_detail"/>
 
             <include layout="@layout/content_os_detail"/>
+
+            <include android:id="@+id/osResponsibleLayout"
+                     layout="@layout/content_tech_detail"
+                     android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 
