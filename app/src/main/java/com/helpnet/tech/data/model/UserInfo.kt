@@ -7,5 +7,6 @@ data class UserInfo(
     @SerializedName("login") val login: String,
     @SerializedName("perfil") val profile: String,
     @SerializedName("provedor_id") val providerId: Int,
-    @SerializedName("status") val status: String
+    @SerializedName("status") val status: String,
+    @SerializedName("token") val token: String
 )

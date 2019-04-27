@@ -1,6 +1,7 @@
 package com.helpnet.tech.ui.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.PorterDuff
 import android.os.Build
@@ -183,5 +184,15 @@ open class BaseActivity : AppCompatActivity() {
     fun getUserInfo(): UserInfo {
         val providerJson = SharedPreferenceUtil.getProviderJson(this)
         return Gson().fromJson(providerJson, UserInfo::class.java)
+    }
+
+    fun doLogout() {
+        FirebaseAuth.getInstance().signOut()
+
+        Intent(this, LoginActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(this)
+            finish()
+        }
     }
 }

@@ -13,7 +13,8 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
+            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning"
+            android:name=".HelpNetApplication">
         <activity
                 android:name=".ui.activities.LoginActivity"
                 android:screenOrientation="portrait"

@@ -15,11 +15,6 @@ object RequestController {
         RestController.create()
     }
 
-    fun listSituations(callbackResponse: Callback<List<Situation>>) {
-        val call = apiController.listSituations()
-        call.enqueue(callbackResponse)
-    }
-
     fun listOpenOS(providerId: Int, callbackResponse: Callback<OSResponse>) {
         val call = apiController.listOpenOS(providerId)
         call.enqueue(callbackResponse)

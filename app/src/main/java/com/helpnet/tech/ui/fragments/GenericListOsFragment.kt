@@ -1,5 +1,6 @@
 package com.helpnet.tech.ui.fragments
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.helpnet.tech.R
 import com.helpnet.tech.data.model.OSsimple
 import com.helpnet.tech.data.network.response.OSResponse
+import com.helpnet.tech.ui.activities.BaseActivity
 import com.helpnet.tech.ui.adapters.ServiceOrderAdapter
+import com.helpnet.tech.util.AlertDialogUtil
 import kotlinx.android.synthetic.main.fragment_list_generic_os.list_os
 import kotlinx.android.synthetic.main.fragment_list_generic_os.thumbsImageView
 import kotlinx.android.synthetic.main.fragment_list_generic_os.tv_empty_layout
@@ -22,6 +25,7 @@ import kotlinx.android.synthetic.main.loading_layout.layout_loading
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.HttpURLConnection
 
 abstract class GenericListOsFragment : Fragment() {
 
@@ -85,6 +89,13 @@ abstract class GenericListOsFragment : Fragment() {
                     body?.osList?.also {
                         setupViews(it)
                     } ?: showPageError(getString(R.string.fail_obtain_os_list))
+                } else if (response.code() == HttpURLConnection.HTTP_FORBIDDEN) {
+                    AlertDialogUtil.showMessageOK(activity,
+                        title = "Atenção",
+                        message = "Você não possui o login válido. Por favor, efetue o login novamente.",
+                        okListener = DialogInterface.OnClickListener { _, _ ->
+                            (activity as BaseActivity).doLogout()
+                        })
                 } else {
                     showPageError(getString(R.string.fail_obtain_os_list))
                 }

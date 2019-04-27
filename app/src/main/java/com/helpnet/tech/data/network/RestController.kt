@@ -1,5 +1,8 @@
 package com.helpnet.tech.data.network
 
+import com.helpnet.tech.HelpNetApplication
+import com.helpnet.tech.util.SharedPreferenceUtil
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,10 +27,21 @@ abstract class RestController {
                 val logging = HttpLoggingInterceptor()
                 logging.level = HttpLoggingInterceptor.Level.BODY
 
+                val authHeader = Interceptor { chain ->
+
+                    val request = chain.request()
+                        .newBuilder()
+                        .addHeader("Authorization", SharedPreferenceUtil.getAccessToken(HelpNetApplication.application?.applicationContext!!))
+                        .build()
+
+                    return@Interceptor chain.proceed(request)
+                }
+
                 return OkHttpClient.Builder()
                     .readTimeout(45, TimeUnit.SECONDS)
                     .connectTimeout(45, TimeUnit.SECONDS)
                     .addInterceptor(logging)
+                    .addInterceptor(authHeader)
                     .build()
             }
     }

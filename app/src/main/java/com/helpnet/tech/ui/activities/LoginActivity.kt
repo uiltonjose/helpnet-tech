@@ -120,6 +120,7 @@ class LoginActivity : BaseActivity() {
             override fun onResponse(call: Call<GetUserInfoResponse>?, response: Response<GetUserInfoResponse>?) {
                 if (response?.isSuccessful!!) {
                     response.body().apply {
+                        SharedPreferenceUtil.setAccessToken(this@LoginActivity, userInfo.token)
                         SharedPreferenceUtil.setProviderJson(this@LoginActivity, Gson().toJson(userInfo))
                         goToHomeScreen()
                     }
