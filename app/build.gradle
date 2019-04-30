@@ -1,8 +1,12 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 android {
     compileSdkVersion 28
@@ -78,6 +82,10 @@ dependencies {
 
     //CircleImageView
     implementation Libs.circleImageView
+
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.9@aar') {
+        transitive = true
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'
