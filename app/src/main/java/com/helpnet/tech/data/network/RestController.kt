@@ -1,6 +1,7 @@
 package com.helpnet.tech.data.network
 
 import android.annotation.SuppressLint
+import com.helpnet.tech.BuildConfig
 import com.helpnet.tech.HelpNetApplication
 import com.helpnet.tech.internal.NoConnectivityException
 import com.helpnet.tech.util.AndroidUtil
@@ -25,7 +26,7 @@ abstract class RestController {
 
         fun create(): EndpointInterface {
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://helpnetws.herokuapp.com/api/")
+                .baseUrl(BuildConfig.BASE_API_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
